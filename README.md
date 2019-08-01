@@ -1,3 +1,2 @@
 # golearn
-Learning go programming language
-
+Learning go programming language.
