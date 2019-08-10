@@ -1,28 +1,28 @@
-
 // Sample code to get aws instances
 package main
 
 import (
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ec2"
 
-    "fmt"
+	"fmt"
 )
 
 func main() {
-    // Load session from shared config
-    sess := session.Must(session.NewSessionWithOptions(session.Options{
-        SharedConfigState: session.SharedConfigEnable,
-    }))
+	// Load session from shared config
+	fmt.Println("Trying to connect to AWS")
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		SharedConfigState: session.SharedConfigEnable,
+	}))
 
-    // Create new EC2 client
-    ec2Svc := ec2.New(sess)
+	// Create new EC2 client
+	ec2Svc := ec2.New(sess)
 
-    // Call to get detailed information on each instance
-    result, err := ec2Svc.DescribeInstances(nil)
-    if err != nil {
-        fmt.Println("Error", err)
-    } else {
-        fmt.Println("Success", result)
-    }
+	// Call to get detailed information on each instance
+	result, err := ec2Svc.DescribeInstances(nil)
+	if err != nil {
+		fmt.Println("Error", err)
+	} else {
+		fmt.Println("Success", result)
+	}
 }
